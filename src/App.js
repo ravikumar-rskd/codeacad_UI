@@ -1,6 +1,6 @@
 // App.js
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import LearningPage from './components/LearningPage';
@@ -16,27 +16,36 @@ function App() {
     'C',
   ]);
 
+  // Use location to check the current path
+  const location = useLocation();
+
+  // Check if the current path is for the Compiler component
+  const isCompilerPage = location.pathname === '/compiler';
+
   return (
-    <Router>
-      <div className="App">
-        <header className="App-header">
-          <Header />
-          </header>
-          <div className="main-content">
-            <Sidebar courses={courses} />
-            <div className="section">
-              <Routes>
-                <Route path="/" element={<LearningPage setCourses={setCourses} />} />
-                <Route path="/lecture/:lectureId" element={<LecturePage />} />
-              </Routes>
-            </div>
-          </div>
-            <div>
-             <Compiler/>
-            </div>
+    <div className="App">
+      <header className="App-header">
+        <Header />
+      </header>
+      <div className="main-content">
+        {/* Conditionally render Sidebar and main section based on route */}
+        {!isCompilerPage && <Sidebar courses={courses} />}
+        <div className="section">
+          <Routes>
+            <Route path="/" element={<LearningPage setCourses={setCourses} />} />
+            <Route path="/lecture/:lectureId" element={<LecturePage />} />
+            <Route path="/compiler" element={<Compiler />} />
+          </Routes>
+        </div>
       </div>
-    </Router>
+    </div>
   );
 }
 
-export default App;
+export default function AppWrapper() {
+  return (
+    <Router>
+      <App/>
+    </Router>
+  );
+}

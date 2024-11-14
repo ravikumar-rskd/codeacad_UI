@@ -6,6 +6,7 @@ import Header from './components/Header';
 import LearningPage from './components/LearningPage';
 import Sidebar from './components/Sidebar';
 import LecturePage from './components/LecturePage';
+import Compiler from './components/Compiler';
 
 function App() {
   // State to store selected courses and lectures
@@ -20,6 +21,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Header />
+          </header>
           <div className="main-content">
             <Sidebar courses={courses} />
             <div className="section">
@@ -29,7 +31,9 @@ function App() {
               </Routes>
             </div>
           </div>
-        </header>
+            <div>
+             <Compiler/>
+            </div>
       </div>
     </Router>
   );

@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const [showDropdown, setShowDropdown] = useState(false);
-    const [menuOpen,setMenuOpen]=useState(false);
+    // const [menuOpen,setMenuOpen]=useState(false);
+    const navigate =useNavigate();
+
+    const handleHomeClick = () => {
+        navigate('/'); // Navigate to the LearningPage route
+    };
 
     return (
         <div className="header">
             <h1>CodeAcad</h1>
             <nav className="header-nav">
-                <a >My Home</a>
-                <a >Catalog </a>
+            <a onClick={handleHomeClick} style={{ cursor: 'pointer' }}>My Home</a>
+                {/* <a >Catalog </a>
                 <a >Resources </a>
                 <a >Pricing </a>
                 <a >Career Center</a>
-                <a >For Business</a>
+                <a >For Business</a> */}
             </nav>
             <div className="header-icons">
                 <span className="icon">🔍</span> {/* Search icon */}

@@ -1,25 +1,23 @@
-import { Typography } from '@mui/material';
+// Sidebar.js
 import React from 'react';
+import { Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-const Sidebar = () =>{
-    const courses=['Python','Java','C'];
-return (
+const Sidebar = ({ courses }) => {
+  return (
     <div className="sidebar">
-        <Typography>
-            Courses
-        </Typography>
-        <ul>
-            {courses.map((title,index)=>(
-                <a href='#' key={index}>{title}<span>&#8594;</span></a>
-            ))}
-            {/* <li>Dashboard</li>
-            <li>My Learning</li>
-            <li>Events</li>
-            <li>Projects</li>
-            <li>Workspaces</li> */}
-        </ul>
+      <Typography variant="h6">Courses</Typography>
+      <ul>
+        {courses.map((title, index) => (
+          <li key={index}>
+            <Link to={`/lecture/${title.toLowerCase()}`} style={{ textDecoration: 'none' }}>
+              {title} <span>&#8594;</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
-);
+  );
 };
 
 export default Sidebar;

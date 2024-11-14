@@ -32,7 +32,7 @@
   list-style-type:circle;
 }
 
-.sidebar ul a {
+.sidebar ul li {
   text-decoration: none;
   padding: 15px 10px;
   font-size: 1rem;
@@ -42,12 +42,12 @@
   align-items: center;
 }
 
-.sidebar ul a:hover {
+.sidebar ul li:hover {
   background-color: #7598e2;
   border-radius: 5px;
 }
 
-.sidebar ul a::before {
+.sidebar ul li::before {
  /* Placeholder for icons */
   font-size: 1.2rem;
   margin-right: 10px;

@@ -1,25 +1,30 @@
 // App.js
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import LearningPage from './components/LearningPage';
 import Sidebar from './components/Sidebar';
-import LecturePage from './components/LecturePage'; // New component for lecture content
+import LecturePage from './components/LecturePage';
 
 function App() {
+  // State to store selected courses and lectures
+  const [courses, setCourses] = useState([
+    'Python',
+    'Java',
+    'C',
+  ]);
+
   return (
     <Router>
       <div className="App">
         <header className="App-header">
           <Header />
           <div className="main-content">
-            <Sidebar />
+            <Sidebar courses={courses} />
             <div className="section">
               <Routes>
-                {/* Route to LearningPage */}
-                <Route path="/" element={<LearningPage />} />
-                {/* Route to LecturePage for specific lectures */}
+                <Route path="/" element={<LearningPage setCourses={setCourses} />} />
                 <Route path="/lecture/:lectureId" element={<LecturePage />} />
               </Routes>
             </div>

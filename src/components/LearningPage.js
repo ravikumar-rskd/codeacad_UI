@@ -1,23 +1,30 @@
 // LearningPage.js
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Accordion, AccordionSummary, AccordionDetails, Typography, Box, Badge } from '@mui/material';
+import React, { useEffect } from 'react';
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+  Box,
+  Badge,
+} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useNavigate } from 'react-router-dom';
 
-const LearningPage = () => {
+
+const LearningPage = ({setCourses}) => {
   const navigate = useNavigate();
-
   // Sample data structure for steps and lectures
   const steps = [
     {
       id: 1,
-      title: "Step 1 : Learn the basics",
+      title: "1 : Learn the basics",
       progress: "0/31",
       lectures: [],
     },
     {
       id: 2,
-      title: "Step 2 : Learn Important Sorting Techniques",
+      title: " 2 : Learn Important Sorting Techniques",
       progress: "0/7",
       lectures: [
         { id: 1, title: "Lec 1: Sorting-I", progress: "0/3" },
@@ -26,19 +33,19 @@ const LearningPage = () => {
     },
     {
       id: 3,
-      title: "Step 3 : Solve Problems on Arrays [Easy -> Medium -> Hard]",
+      title: " 3 : Solve Problems on Arrays [Easy -> Medium -> Hard]",
       progress: "0/40",
       lectures: [],
     },
     {
       id: 4,
-      title: "Step 4 : Binary Search [1D, 2D Arrays, Search Space]",
+      title: " 4 : Binary Search [1D, 2D Arrays, Search Space]",
       progress: "0/32",
       lectures: [],
     },
     {
       id: 5,
-      title: "Step 4 : Searching Algorithm",
+      title: " 5 : Searching Algorithm",
       progress: "0/2",
       lectures: [
         { id:1,title:"Lec 1: DFS",progress:"0/2" },
@@ -46,6 +53,12 @@ const LearningPage = () => {
       ],
     },
   ];
+
+  // Set courses in Sidebar when LearningPage mounts
+  useEffect(() => {
+    setCourses(steps.map((step) => step.title));
+  }, [setCourses]);
+
   const handleLectureClick = (lectureId) => {
     navigate(`/lecture/${lectureId}`);
   };
@@ -66,13 +79,13 @@ const LearningPage = () => {
           <AccordionDetails sx={{ bgcolor: step.lectures.length ? "#fff9f9" : "#f9f9f9" }}>
             {step.lectures.length > 0 ? (
               step.lectures.map((lecture) => (
-                <Accordion
-                  key={lecture.id}
-                  sx={{ marginY: 1, boxShadow: 0 }}
-                  onClick={() => handleLectureClick(lecture.id)}
-                >
+                <Accordion key={lecture.id} sx={{ marginY: 1, boxShadow: 0 }}>
                   <AccordionSummary expandIcon={<ExpandMoreIcon />} sx={{ paddingLeft: 4 }}>
-                    <Typography variant="subtitle1">{lecture.title}</Typography>
+                    <Typography variant="subtitle1"
+                          onClick={() => handleLectureClick(step.title.toLowerCase())}
+                          style={{ cursor: 'pointer', color: 'blue' }}>
+                      {lecture.title}
+                      </Typography>
                     <Box sx={{ marginLeft: "auto", display: "flex", alignItems: "center" }}>
                       <Badge
                         badgeContent={lecture.progress}

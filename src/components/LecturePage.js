@@ -9,12 +9,22 @@ const LecturePage = () => {
   return (
     <Box sx={{ padding: 3 }}>
       <Typography variant="h4" gutterBottom>
-        Lecture Content for Lecture ID: {lectureId}
+        {lectureId.toUpperCase()} Course
       </Typography>
       <Typography variant="body1">
-        This page contains the details and content of the lecture with ID: {lectureId}. 
-        Here you can add paragraphs, images, or any additional resources for this lecture.
+        Welcome to the {lectureId.toUpperCase()} course. This page includes lecture details and content for the selected course.
       </Typography>
+      <div>
+        <video
+        width="100%"
+        height="auto"
+        controls
+        style={{ borderRadius: '8px', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)' }}
+      >
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      </div>
     </Box>
   );
 };

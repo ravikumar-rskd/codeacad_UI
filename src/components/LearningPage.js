@@ -1,5 +1,5 @@
 // LearningPage.js
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import {
   Accordion,
   AccordionSummary,
@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 const LearningPage = ({setCourses}) => {
   const navigate = useNavigate();
   // Sample data structure for steps and lectures
-  const steps = [
+  const steps = useMemo(() => [
     {
       id: 1,
       title: "1 : Learn the basics",
@@ -52,12 +52,12 @@ const LearningPage = ({setCourses}) => {
         {id:2,title:"Lec 2: BFS",progress:"0/2"},
       ],
     },
-  ];
+  ], []);
 
   // Set courses in Sidebar when LearningPage mounts
   useEffect(() => {
     setCourses(steps.map((step) => step.title));
-  }, [setCourses]);
+  }, [setCourses,steps]);
 
   const handleLectureClick = (lectureId) => {
     navigate(`/lecture/${lectureId}`);

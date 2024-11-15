@@ -301,4 +301,93 @@ button:hover {
   text-align: center;
 }
 
+/* Dashboard.css */
+.dsa {
+  width: 250px;
+  height: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.dsa:hover {
+  transform: scale(1.05);
+}
+
+.dsa h2 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.dsa p {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Sidebar.css */
+
+.sidebar {
+  width: 250px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar-title {
+  margin-bottom: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.course-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.course-item {
+  margin-bottom: 8px;
+}
+
+.course-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.course-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.lecture-list {
+  list-style: none;
+  padding-left: 16px;
+  margin-top: 4px;
+}
+
+.lecture-item {
+  margin-bottom: 6px;
+}
+
+.lecture-link {
+  text-decoration: none;
+  color: #555;
+}
+
+.lecture-link:hover {
+  color: #0073e6;
+}
+
 
